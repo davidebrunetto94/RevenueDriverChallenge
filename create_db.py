@@ -17,7 +17,7 @@ def main():
         db_connection = pymysql.connect(host='localhost', port=3306, user='root', passwd='admin')
         cursor = db_connection.cursor()
 
-        db_query = "CREATE DATABASE IF NOT EXISTS challenge_db"
+        db_query = "CREATE DATABASE IF NOT EXISTS challenge"
         cursor.execute(db_query)
 
         drop_query = "DROP TABLE IF EXISTS challenge.gnu_table"
