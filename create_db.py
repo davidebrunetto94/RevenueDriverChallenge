@@ -20,10 +20,10 @@ def main():
         db_query = "CREATE DATABASE IF NOT EXISTS challenge"
         cursor.execute(db_query)
 
-        drop_query = "DROP TABLE IF EXISTS challenge.gnu_table"
+        drop_query = "DROP TABLE IF EXISTS challenge.new_table"
         cursor.execute(drop_query)
 
-        creation_query = "CREATE TABLE challenge.gnu_table( \
+        creation_query = "CREATE TABLE challenge.new_table( \
                         {} DATE, \
                         `{}` VARCHAR(50),\
                         `{}` INT UNSIGNED PRIMARY KEY, \
@@ -41,7 +41,7 @@ def main():
         cursor.execute(creation_query)
         
         rows_tuples = [tuple(x) for x in rows] #We need the rows in a list of tuples to use it on executemany
-        insert_query = "INSERT INTO challenge.gnu_table VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        insert_query = "INSERT INTO challenge.new_table VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         cursor.executemany(insert_query, rows_tuples)
         db_connection.commit()
     except Exception as e:
